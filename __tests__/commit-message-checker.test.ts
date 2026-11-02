@@ -34,6 +34,7 @@ describe('commit-message-checker tests', () => {
       pattern: '',
       flags: '',
       error: '',
+      invert: false,
       messages: []
     }
     await expect(
@@ -46,6 +47,7 @@ describe('commit-message-checker tests', () => {
       pattern: 'some-pattern',
       flags: 'abcdefgh',
       error: '',
+      invert: false,
       messages: []
     }
     await expect(
@@ -58,6 +60,7 @@ describe('commit-message-checker tests', () => {
       pattern: 'some-pattern',
       flags: '',
       error: '',
+      invert: false,
       messages: []
     }
     await expect(
@@ -70,6 +73,7 @@ describe('commit-message-checker tests', () => {
       pattern: 'some-pattern',
       flags: '',
       error: 'some-error',
+      invert: false,
       messages: []
     }
     await expect(
@@ -82,6 +86,7 @@ describe('commit-message-checker tests', () => {
       pattern: 'some-pattern',
       flags: '',
       error: 'some-error',
+      invert: false,
       messages: ['some-message']
     }
     await expect(
@@ -94,6 +99,7 @@ describe('commit-message-checker tests', () => {
       pattern: 'some-pattern',
       flags: '',
       error: 'some-error',
+      invert: false,
       messages: ['some-message', 'some-pattern']
     }
     await expect(
@@ -106,6 +112,7 @@ describe('commit-message-checker tests', () => {
       pattern: '.*',
       flags: '',
       error: 'some-error',
+      invert: false,
       messages: ['some-message']
     }
     await expect(
@@ -118,6 +125,7 @@ describe('commit-message-checker tests', () => {
       pattern: '.*',
       flags: '',
       error: 'some-error',
+      invert: false,
       messages: ['some-message', 'other-message']
     }
     await expect(

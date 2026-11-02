@@ -29,6 +29,7 @@ export interface ICheckerArguments {
   flags: string
   error: string
   messages: string[]
+  invert: boolean
 }
 
 /**
@@ -69,7 +70,7 @@ export async function checkCommitMessages(
   core.info(`Checking commit messages against "${args.pattern}"...`)
 
   for (const message of args.messages) {
-    if (checkMessage(message, args.pattern, args.flags)) {
+    if (checkMessage(message, args.pattern, args.flags, args.invert)) {
       core.info(`- OK: "${message}"`)
     } else {
       core.info(`- failed: "${message}"`)
@@ -88,13 +89,21 @@ export async function checkCommitMessages(
  *
  * @param     message message to check against the pattern.
  * @param     pattern regex pattern for the check.
+ * @param     invert  Checks for non-existence of match
  * @returns   boolean
  */
 function checkMessage(
   message: string,
   pattern: string,
-  flags: string
+  flags: string,
+  invert: boolean
 ): boolean {
   const regex = new RegExp(pattern, flags)
-  return regex.test(message)
+  let result: boolean = regex.test(message)
+
+  if (invert) {
+    result = !result
+  }
+
+  return result
 }
