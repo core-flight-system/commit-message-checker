@@ -7,5 +7,8 @@ module.exports = {
   transform: {
     '^.+\\.ts$': 'ts-jest'
   },
+  "transformIgnorePatterns": [
+    "node_modules/(?!@actions)"
+  ],
   verbose: true
 }

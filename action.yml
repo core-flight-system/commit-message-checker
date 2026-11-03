@@ -5,6 +5,10 @@ inputs:
   pattern:
     description: 'A regex pattern to check if a commit message is valid.'
     required: true
+  invert:
+    description: 'If true, checks for the non-existence of a matching line'
+    required: false
+    default: 'false'
   flags:
     description: 'Expression flags change how the expression is interpreted.'
     required: false
@@ -27,7 +31,7 @@ inputs:
   accessToken:
     description: 'you must provide GITHUB_TOKEN to this input if checkAllCommitMessages is true'
     required: false
-    default: 'false'  
+    default: 'false'
 runs:
   using: node24
   main: dist/index.js

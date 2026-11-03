@@ -44,6 +44,11 @@ export async function getInputs(): Promise<ICheckerArguments> {
   result.pattern = core.getInput('pattern', {required: true})
   core.debug(`pattern: ${result.pattern}`)
 
+  // Get invert
+  const invertStr = core.getInput('invert')
+  core.debug(`invertStr: ${invertStr}`)
+  result.invert = invertStr ? invertStr === 'true' : /* default */ false
+
   // Get flags
   result.flags = core.getInput('flags')
   core.debug(`flags: ${result.flags}`)
